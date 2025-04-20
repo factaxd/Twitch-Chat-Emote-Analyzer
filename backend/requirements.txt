@@ -1,0 +1,25 @@
+fastapi>=0.95.0,<0.111.0
+uvicorn[standard]>=0.20.0,<0.28.0
+python-dotenv>=0.21.0,<1.1.0
+
+# Dependencies to be added later:
+# twitchio>=2.0.0
+twitchio>=2.8.0,<3.0.0
+# spacy>=3.0.0
+# spacy>=3.5.0,<4.0.0
+# Example: python -m spacy download en_core_web_sm
+
+# NLP Libraries (Alternative to spaCy)
+nltk>=3.8,<4.0
+vaderSentiment>=3.3,<4.0
+
+# HTTP Client for Emote APIs
+httpx>=0.24.0,<0.28.0
+
+# Optional but common for sentiment analysis with spaCy:
+# spacytextblob>=4.0.0 
+
+# Note: You need to download a spaCy language model after installing.
+# Example: python -m spacy download en_core_web_sm
+# Note: NLTK requires downloading data packages after installation.
+# Example: Run the backend once, it might prompt or use included download script. 

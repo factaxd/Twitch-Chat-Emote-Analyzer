@@ -1,0 +1,374 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+#root {
+  max-width: 100%; /* Allow full width */
+  margin: 0 auto;
+  padding: 0; /* Remove padding */
+  text-align: center;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ensure App takes full viewport height */
+  overflow: hidden; /* Prevent App itself from scrolling */
+}
+
+/* Header */
+.app-header {
+  flex-shrink: 0; /* Prevent header from shrinking */
+  background-color: #1f1f1f;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8em;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+input[type="text"] {
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background-color: #333;
+  color: rgba(255, 255, 255, 0.87);
+  transition: border-color 0.25s;
+}
+input[type="text"]:focus,
+input[type="text"]:focus-visible {
+  outline: none;
+  border-color: #646cff;
+}
+input[type="text"]:disabled {
+    background-color: #444;
+    color: #888;
+    cursor: not-allowed;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #4a4a4a;
+  color: #eee;
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+  background-color: #5a5a5a;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+button:disabled {
+    background-color: #333;
+    color: #777;
+    cursor: not-allowed;
+    border-color: transparent;
+}
+
+.status-bar {
+  font-size: 0.9em;
+  color: #aaa;
+  min-height: 1.2em; /* Prevent layout shift */
+}
+
+.status-bar .error {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+/* Main Content Layout */
+.main-content {
+  display: flex;
+  flex-grow: 1; /* Take remaining vertical space */
+  overflow: hidden; /* IMPORTANT: Prevent this container from overflowing */
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.chat-feed-section {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent sections from growing beyond flex container */
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 0 0 600px; /* Increased width to 500px */
+  min-width: 600px; /* Add a slightly larger minimum width */
+}
+
+.dashboard-section {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent sections from growing beyond flex container */
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1rem;
+  flex: 1 1 auto; /* Take remaining space, allow shrinking if needed */
+  min-width: 1200px; /* Minimum width for the dashboard */
+}
+
+section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.4em;
+  color: #ddd;
+  flex-shrink: 0; /* Prevent title from shrinking */
+}
+
+/* New styles for Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between; /* Pushes title and score apart */
+    align-items: center; /* Vertically aligns items */
+    margin-bottom: 1rem; /* Space below the header */
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.dashboard-header h2 {
+    margin: 0; /* Remove default margin from h2 */
+    font-size: 1.4em; /* Keep original size */
+    color: #ddd;
+}
+
+.average-sentiment {
+    font-size: 1em;
+    font-weight: 500;
+    color: #a0a0f0; /* A slightly distinct color */
+    background-color: #3a3a3a; /* Subtle background */
+    padding: 0.3em 0.6em;
+    border-radius: 4px;
+}
+
+/* Chat Log */
+.chat-log {
+  flex-grow: 1; /* Allow chat log to fill section space */
+  overflow-y: auto; /* Enable internal scrolling */
+  text-align: left;
+  padding: 0.5rem;
+  background-color: #1e1e1e;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+.chat-message {
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.chat-message .timestamp {
+  color: #888;
+  font-size: 0.8em;
+  margin-right: 0.5rem;
+}
+
+.chat-message .author {
+  font-weight: bold;
+  margin-right: 0.4rem;
+}
+
+.chat-message .content {
+  /* color: #eee; */
+  /* Align text and images vertically */
+  vertical-align: middle;
+}
+
+.chat-emote-image {
+  /* Default emote size */
+  height: 1.5em; 
+  width: auto;
+  /* Align with text */
+  vertical-align: middle;
+  /* Add some space around emotes */
+  margin: 0 0.1em;
+}
+
+.chat-message .detected-emotes {
+    margin-left: 0.5em;
+    font-size: 0.85em;
+    color: #aaa;
+    font-style: italic;
+}
+
+.system-message {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* New styles for sentiment highlighting */
+.sentiment-positive {
+    background-color: rgba(40, 167, 69, 0.25); /* Light transparent green */
+    padding: 0.1em 0.2em;
+    border-radius: 3px;
+    margin: 0 0.05em; /* Tiny horizontal space */
+}
+
+.sentiment-negative {
+    background-color: rgba(220, 53, 69, 0.25); /* Light transparent red */
+    padding: 0.1em 0.2em;
+    border-radius: 3px;
+    margin: 0 0.05em; /* Tiny horizontal space */
+}
+
+/* Adjustments for highlighted spans within content */
+.chat-message .content span {
+    /* Ensure vertical alignment is consistent with emotes and text */
+    vertical-align: middle;
+}
+
+/* Dashboard & Charts */
+.charts-container {
+  flex-grow: 1; /* Allow charts container to fill section space */
+  display: flex;
+  flex-direction: column; /* Arrange items vertically */
+  gap: 1rem; /* Space between chart wrappers and the row */
+  overflow-y: auto; /* Enable internal scrolling if charts overflow */
+}
+
+/* Style for the row containing Keywords and Emotes charts */
+.chart-row {
+  display: flex;
+  flex-direction: row; /* Arrange items horizontally */
+  gap: 1rem; /* Space between the two charts in the row */
+}
+
+.chart-wrapper {
+  background-color: #333;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #4a4a4a;
+}
+
+/* Apply flex sizing only to charts within the row */
+.chart-row .chart-wrapper {
+  flex: 1; /* Allow these chart wrappers to grow and share space */
+  min-width: 300px; /* Prevent these charts from becoming too narrow */
+}
+
+.chart-wrapper h3 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  font-size: 1.1em;
+  color: #ccc;
+}
+
+/* Recharts Specific Customization (Optional) */
+.recharts-tooltip-wrapper {
+  font-size: 0.9em;
+}
+
+/* Light Mode Adjustments (Optional but Recommended) */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  .app-header {
+    background-color: #f0f0f0;
+    border-bottom-color: #ccc;
+  }
+  input[type="text"] {
+    background-color: #e0e0e0;
+    border-color: #aaa;
+    color: #213547;
+  }
+  input[type="text"]:disabled {
+    background-color: #eee;
+    color: #999;
+  }
+   button {
+    background-color: #e0e0e0;
+    color: #333;
+  }
+  button:hover {
+    border-color: #747bff;
+    background-color: #d0d0d0;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #aaa;
+  }
+  .status-bar {
+    color: #555;
+  }
+  .status-bar .error {
+    color: #d90429;
+  }
+   .chat-feed-section, .dashboard-section {
+    background-color: #f5f5f5;
+    border-color: #ccc;
+  }
+  section h2 {
+    color: #444;
+  }
+  .chat-log {
+    background-color: #eaeaea;
+  }
+  .chat-message .timestamp { color: #666; }
+  .chat-message .author { color: initial; } /* Use default text color */
+  .chat-message .content { color: #333; }
+  .chat-message .detected-emotes { color: #555; }
+  .system-message { color: #666; }
+   .chart-wrapper {
+     background-color: #eee;
+     border-color: #ddd;
+   }
+   .chart-wrapper h3 { color: #555; }
+   .recharts-text, .recharts-cartesian-axis-tick-value {
+     fill: #555 !important; /* Adjust chart text color */
+   }
+   .recharts-cartesian-grid-line line {
+        stroke: #ccc !important; /* Adjust grid line color */
+    }
+    /* Adjust tooltip for light mode */
+    .recharts-tooltip-wrapper .recharts-tooltip-label,
+    .recharts-tooltip-wrapper .recharts-tooltip-item {
+        color: #333 !important;
+    }
+    .recharts-tooltip-cursor {
+        fill: rgba(200, 200, 200, 0.5) !important;
+    }
+}

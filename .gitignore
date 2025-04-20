@@ -1,0 +1,40 @@
+# Standard Python/IDE files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+.venv
+venv/
+env/
+ENV/
+
+# FastAPI / Uvicorn
+.fastapi_cache/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node / Frontend
+/frontend/node_modules
+/frontend/dist
+/frontend/.env*
+/frontend/.DS_Store
+/frontend/.cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo 
